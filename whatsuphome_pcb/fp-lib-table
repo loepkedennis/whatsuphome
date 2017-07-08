@@ -1,0 +1,4 @@
+(fp_lib_table
+  (lib (name ESP8266)(type KiCad)(uri /Users/dennisloepke/Downloads/kicad-ESP8266-master/ESP8266.pretty)(options "")(descr ""))
+  (lib (name LD1117)(type Legacy)(uri /Users/dennisloepke/Downloads/LD1117/LD1117.mod)(options "")(descr ""))
+)

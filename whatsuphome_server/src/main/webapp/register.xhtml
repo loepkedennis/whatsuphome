@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	    xmlns:jsf="http://xmlns.jcp.org/jsf"
+	    xmlns:p="http://primefaces.org/ui"
+	xmlns:ph="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:h="http://java.sun.com/jsf/html">
+<ui:composition template="/WEB-INF/templates/template.xhtml">
+	<ui:define name="main">
+	<div class="container-fluid text-left">
+			<div class="row">
+			<div class="col-sm-12">
+			  <div class="alert alert-danger alert-dismissible fade in" role="alert" jsf:rendered="#{not empty facesContext.getMessageList()}">
+    		 <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+    		  <strong>Fehler: </strong><br/>  
+
+    		  <h:messages styleClass="liste" />
+    		  
+  		   </div>
+			
+<h:form id="registerForm">		
+<h:message id="test" showSummary="true"/><br/>
+</h:form>
+</div>
+</div> 
+</div>
+		<div class="container-fluid topping bg-3 text-center">
+			<div class="row">
+				<div class="col-sm-6">
+					<h1>Registieren</h1>
+					<span>Legen Sie einen neuen Benutzer an.<br /> Bitte geben
+						Sie dafür die geforderten Daten ein.<br /> Der neu angelegte
+						Benutzer ist dann in der Lage Akteure am<br /> System anzumelden.
+					</span>
+				</div>
+				<div class="col-sm-6">
+					<h:form >
+						<div class="text-left">
+							<div class="form-group">
+								<label for="inputdefault">eMail:</label> 
+								<h:inputText id="InputEmail" required="true" validatorMessage="Keine gültige Email" requiredMessage="Die Email muss angegeben werden!"  value="#{selectedUser.email}" styleClass="form-control"  >
+												<f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+											
+								</h:inputText>
+							</div>
+							<div class="form-group">
+								<label for="inputdefault">eMail wiederholen:</label> 
+									<h:inputText id="InputReEmail" required="true" validatorMessage="Keine gültige ReEmail" requiredMessage="Die ReEmail muss angegeben werden!"  value="#{selectedUser.reemail}" styleClass="form-control"  >
+												<f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+			
+											</h:inputText>
+							</div>
+							<div class="form-group">
+								<label for="inputlg">Passwort:</label> 
+								<h:inputSecret id="InputPasswort" required="true" requiredMessage="Das Passwort muss angegeben werden!" value="#{selectedUser.password}" styleClass="form-control"  />
+							</div>
+							<div class="form-group">
+								<label for="inputlg">Passwort wiederholen:</label> 
+								<h:inputSecret id="InputRePasswort" required="true" requiredMessage="Das RePasswort muss angegeben werden!" value="#{selectedUser.repassword}" styleClass="form-control"  />
+							</div>
+							<div class="form-group">
+								<label for="inputlg">Vorname:</label>
+								<h:inputText id="InputVorname" required="true" requiredMessage="Der Vorname muss angegeben werden!" value="#{selectedUser.firstName}" styleClass="form-control"  />
+							</div>
+							<div class="form-group">
+								<label for="inputlg">Nachname:</label>
+								<h:inputText id="InputNachname" required="true" requiredMessage="Der Nachname muss angegeben werden!"  value="#{selectedUser.lastName}" styleClass="form-control"  />
+							</div>
+							<div class="form-group">
+								<label for="inputlg">Code:</label>
+								<h:inputText id="InputCode" required="true" requiredMessage="Der Registrierungscode muss angegeben werden!"  value="#{registerController.registerCode}" styleClass="form-control"  />
+							</div>
+							<div class="row">
+								<div class="col-sm-6 text-left">
+									<h:link value="Probleme beim registrieren?" outcome="faq"></h:link>
+								</div>
+								<div class="col-sm-6">
+									<div class="form-group text-right">
+										<h:commandButton action="#{registerController.doSave}" value="Registieren" styleClass="btn btn-success"></h:commandButton>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</h:form>
+
+				</div>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,53 @@
+/* Remove the navbar's default margin-bottom and rounded borders */
+
+* {
+margin: 0;
+padding: 0;
+}
+
+html, body {
+	height: 100%;
+}
+
+#main {
+  overflow:auto;
+  padding-bottom:50px; /* this needs to be bigger than footer height*/
+}
+
+#wrapper{
+	position: relative;
+	min-height: 100%;
+}
+
+.navbar {
+	margin-bottom: 0;
+	border-radius: 0;
+}
+
+.topping {
+	margin-top: 5%;
+}
+
+.buttongroup{
+	margin-top: 15px;
+}
+
+.liste{
+	list-style: none;
+}
+
+
+.footer {
+  padding-bottom: 15px;
+	
+  position: relative;
+  margin-top: -50px; /* negative value of footer height */
+  height: 50px;
+  clear:both;
+  padding-top:20px;
+
+}
+
+.footertext {
+	padding-bottom: 20px;
+}

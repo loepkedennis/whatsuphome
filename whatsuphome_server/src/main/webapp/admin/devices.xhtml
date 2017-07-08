@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:h="http://java.sun.com/jsf/html">
+<ui:composition template="/WEB-INF/templates/template.xhtml">
+	<ui:define name="header">
+
+		<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#myNavbar">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<h:graphicImage name="whats_app.png" library="images"
+								height="50" width="50" />
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<h:form>
+					<ul class="nav navbar-nav">
+						<li class="dropdown"><a class="dropdown-toggle"
+							data-toggle="dropdown" href="#">Menü <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><h:link value="Dashboard" outcome="/login/index" /></li>
+								<li><h:commandLink
+										action="#{navigationController.goKonto()}"
+										value="Konto administrieren" /></li>
+								<li><h:commandLink
+										action="#{navigationController.goDevices()}"
+										rendered="#{request.isUserInRole('admin')}"
+										value="Geräte hinzufügen" /></li>
+								
+							</ul></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a><span class="glyphicon glyphicon-user"></span>  #{navigationController.user.firstName} #{navigationController.user.lastName}</a></li>
+						<li><a jsf:action="#{navigationController.goLogout}"><span
+								class="glyphicon glyphicon-log-in"></span> Abmelden</a></li>
+					</ul>
+				</h:form>
+			</div>
+		</div>
+		</nav>
+	</ui:define>
+
+	<ui:define name="main">
+		<div class="container-fluid bg-3 text-center">
+			<div class="row">
+				<div class="col-sm-10 text-left">
+					<h1>Gerät hinzufügen</h1>
+					<div class="row">
+						<div class="col-sm-12 text-left">
+							<p>Fügen Sie ein Device hinzu.</p>
+
+							<h:form>
+								<div class="text-left">
+									<div class="form-group">
+										<label for="inputdefault">Gerät:</label> <select
+											class="form-control" id="sel1">
+											<option>ESP8266 Modul</option>
+											
+										</select>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="inputlg">Gerätename:</label><h:inputText value="#{deviceController.device.name}" styleClass="form-control"
+										 />
+								</div>
+								<div class="form-group">
+									<label for="inputlg">Geräte ID:</label><h:inputText value="#{deviceController.device.token}" styleClass="form-control"
+										 />
+								</div>
+
+
+								<div class="row">
+									<div class="col-sm-6 text-left"></div>
+									<div class="col-sm-6">
+										<div class="form-group text-right">
+											<h:commandButton action="#{deviceController.doSave()}" styleClass="btn btn-success" value="Bestätigen"/>
+										</div>
+									</div>
+
+								</div>
+
+							</h:form>
+						</div>
+					</div>
+
+				</div>
+				<div class="col-sm-2">
+					<div class=" topping well text-left">
+						<h3>Hilfe</h3>
+						<a href="#">Erste Schritte...</a><br /> <a href="#">Passwort
+							ändern</a><br /> <a href="#">Module vorbereiten</a><br /> <br /> <a
+							href="#">Module anfertigen</a><br />
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>
+</html>

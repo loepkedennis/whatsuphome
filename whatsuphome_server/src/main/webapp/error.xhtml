@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:h="http://java.sun.com/jsf/html">
+<ui:composition template="/WEB-INF/templates/template.xhtml">
+	<ui:define name="main">
+		<div class="container-fluid topping bg-3 text-center">
+			<div class="row">
+				<div class="col-sm-6">
+					<h1>Passwort vergessen?</h1>
+					<span>Sollten Sie Ihr Passwort vergessen haben,<br /> wird
+						Ihnen nachdem Sie alle Angaben getätigt haben,<br /> ein neues
+						Passwort per eMail zugeschickt. <h:link value=" Zur Anmeldeseite"
+							outcome="login/index" />
+					</span>
+				</div>
+				<div class="col-sm-6">
+					<h:form>
+						<div class="text-left">
+							<div class="form-group">
+								<label for="inputdefault">eMail</label>
+								<h:inputText styleClass="form-control"
+									value="#{kontaktController.email}" required="true"
+									requiredMessage="Die eingegebene eMail ist fehlerhaft"
+									p:placeholder="eMail" />
+							</div>
+							<div class="form-group">
+								<label for="inputlg">eMail wiederholen</label>
+								<h:inputText styleClass="form-control"
+									value="#{kontaktController.reemail}" required="true"
+									requiredMessage="Die eingegebene eMail ist fehlerhaft"
+									p:placeholder="eMail wiederholen" />
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-body text-center">
+									<h:outputLabel value="#{kontaktController.capture.captureWert}" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="inputlg">Captcha</label>
+								<h:inputText id="caputreId" styleClass="form-control"
+									value="#{kontaktController.capture.captureWertVergleich}"
+									required="true"
+									requiredMessage="Die Zahlenfolge wurde falsch eingegeben"
+									p:placeholder="Zahlenfolge" />
+							</div>
+							<div class="row">
+								<div class="col-sm-6 text-left">
+									<h:link value="Noch keinen Account?" outcome="register" />
+								</div>
+								<div class="col-sm-6">
+									<div class="form-group text-right">
+
+										<button class="btn btn-success" jsf:actionListener="#{kontaktController.sendMail()}">Bestätigen</button>
+
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</h:form>
+
+				</div>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>
+</html>
